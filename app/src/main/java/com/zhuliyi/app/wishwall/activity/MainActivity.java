@@ -98,7 +98,7 @@ public class MainActivity extends MainFragmentActivity {
         menu=new SlidingMenu(this);//初始化Slidingmenu
         menu.setMode(SlidingMenu.LEFT);
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);// 设置菜单滑动，触碰屏幕的范围
-        menu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 4);// 设置SlidingMenu边框距离
+        menu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 3);// 设置SlidingMenu边框距离
         menu.setBehindScrollScale(0f);//  设置SlidingMenu滑动的拖拽效果
         //menu.setFadeDegree(0.35f);// 设置SlidingMenu渐变
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);//使SlidingMenu附加在Activity上

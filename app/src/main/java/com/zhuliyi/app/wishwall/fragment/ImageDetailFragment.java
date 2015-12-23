@@ -1,9 +1,10 @@
-package com.zhuliyi.app.wishwall.adapter;
+package com.zhuliyi.app.wishwall.fragment;
 
-import android.app.Activity;
-import android.content.Context;
+
 import android.graphics.Bitmap;
-import android.support.v4.view.PagerAdapter;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,26 +17,29 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.zhuliyi.app.wishwall.R;
+import com.zhuliyi.app.wishwall.adapter.ImageGridAdapter;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-import static com.zhuliyi.app.wishwall.R.id.progressBar_pager;
-
 /**
- * 用于pager的图片适配器
- * Created by zhuliyi on 2015/12/21.
+ * 用于图片的滑动，用fragment来实现，
+ * A simple {@link Fragment} subclass.
  */
-public class ViewPagerAdapter extends PagerAdapter {
-    private PhotoViewAttacher attacher;
+public class ImageDetailFragment extends Fragment {
+
+    private PhotoViewAttacher mAttacher;
     private DisplayImageOptions options;
-    private Activity activity;
-    private Context mContext;
+    private String[] imagesUrl= ImageGridAdapter.imagesUrl;
+    private int position;
 
-    private String[] imagesUrl=ImageGridAdapter.imagesUrl;
-
-    public ViewPagerAdapter(Activity activity){
-        this.mContext=activity.getApplicationContext();
-        this.activity=activity;
+    public static ImageDetailFragment newInstance(int pos){
+        final ImageDetailFragment  fragment=new ImageDetailFragment();
+        final Bundle args = new Bundle();
+        args.putInt("position", pos);
+        fragment.setArguments(args);
+        return fragment;
+    }
+    public ImageDetailFragment(){
         options = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.mipmap.ic_empty)
                 .showImageOnFail(R.mipmap.ic_error)
@@ -49,24 +53,28 @@ public class ViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //获取上一个状态保存的位置，要不然图片显示会错乱
+        position = getArguments() != null ? getArguments().getInt("position") : null;
+
     }
-
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View rootView=View.inflate(mContext, R.layout.item_pager_image,null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.item_pager_image, container, false);
         ImageView imageView= (ImageView) rootView.findViewById(R.id.photoView_pager);
-
-        final ProgressBar progressBar= (ProgressBar) rootView.findViewById(progressBar_pager);
-        attacher=new PhotoViewAttacher(imageView);
-        attacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
+        final ProgressBar progressBar= (ProgressBar) rootView.findViewById(R.id.progressBar_pager);
+        mAttacher=new PhotoViewAttacher(imageView);
+        mAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
             @Override
             public void onPhotoTap(View view, float x, float y) {
-                activity.finish();
+                getActivity().finish();
             }
         });
-        ImageLoader.getInstance().displayImage(imagesUrl[position],imageView, options,new SimpleImageLoadingListener(){
+        //imageLoader显示网络图片
+        ImageLoader.getInstance().displayImage(imagesUrl[position],imageView,options,new SimpleImageLoadingListener(){
             @Override
             public void onLoadingStarted(String imageUri, View view) {
                 progressBar.setProgress(0);
@@ -82,23 +90,12 @@ public class ViewPagerAdapter extends PagerAdapter {
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 progressBar.setVisibility(View.GONE);
-                attacher.update();//这个一定要加上，要不然图片会突变，这个问题搞了我几天
+                mAttacher.update();//这个一定要加上，要不然图片会突变，这个问题搞了我几天
             }
         });
-        container.addView(rootView,0);
+
         return rootView;
     }
-
-    @Override
-    public int getCount() {
-        return imagesUrl.length;
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view.equals(object);
-    }
-
 
 
 }

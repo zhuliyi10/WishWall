@@ -14,6 +14,7 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.zhuliyi.app.wishwall.R;
+import com.zhuliyi.app.wishwall.config.Configuration;
 import com.zhuliyi.app.wishwall.config.Constants;
 
 /**
@@ -62,6 +63,28 @@ public class ImageGridAdapter extends BaseAdapter{
         }else {
             holder= (ViewHolder) convertView.getTag();
         }
+        //改变图片显示的大小
+        ViewGroup.LayoutParams lp=holder.imageView.getLayoutParams();
+        if(imagesUrl.length==1){
+            lp.width=(Configuration.Equipment.SCREEN_WIDTH-20);
+            lp.height=(Configuration.Equipment.SCREEN_WIDTH-20);
+        }else if(imagesUrl.length==2||imagesUrl.length==4){
+            lp.width=(Configuration.Equipment.SCREEN_WIDTH-30)/2;
+            lp.height=(Configuration.Equipment.SCREEN_WIDTH-30)/2;
+        }else {
+            lp.width=(Configuration.Equipment.SCREEN_WIDTH-40)/3;
+            lp.height=(Configuration.Equipment.SCREEN_WIDTH-40)/3;
+        }
+        holder.imageView.setLayoutParams(lp);
+
+//        if(imagesUrl.length==1){
+//            holder.imageView.setLayoutParams(new ViewGroup.LayoutParams(Configuration.Equipment.SCREEN_WIDTH-20,Configuration.Equipment.SCREEN_WIDTH-20));
+//        }else if(imagesUrl.length==2||imagesUrl.length==4){
+//            holder.imageView.setLayoutParams(new ViewGroup.LayoutParams((Configuration.Equipment.SCREEN_WIDTH-40)/2,(Configuration.Equipment.SCREEN_WIDTH-40)/2));
+//        }else {
+//            holder.imageView.setLayoutParams(new ViewGroup.LayoutParams(120,120));
+//        }
+        //加载网络图片
         ImageLoader.getInstance()
                 .displayImage(imagesUrl[position], holder.imageView, options, new SimpleImageLoadingListener() {
                     @Override

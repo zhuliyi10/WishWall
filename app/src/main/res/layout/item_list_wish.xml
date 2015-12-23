@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
+    android:id="@+id/linearLayout_item"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -15,8 +16,8 @@
 
         <ImageView
             android:id="@+id/imageView_head"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:src="@mipmap/default_avatar_male" />
 
@@ -62,11 +63,15 @@
 
     <com.zhuliyi.app.wishwall.view.SodukuGridView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/gridView_image"
         android:gravity="center"
         android:numColumns="3"
-        android:stretchMode="columnWidth"></com.zhuliyi.app.wishwall.view.SodukuGridView>
+        android:stretchMode="columnWidth"
+        android:paddingLeft="@dimen/picture_spacing"
+        android:paddingRight="@dimen/picture_spacing"
+        android:verticalSpacing="@dimen/picture_spacing"
+        android:horizontalSpacing="@dimen/picture_spacing"></com.zhuliyi.app.wishwall.view.SodukuGridView>
     <!--<FrameLayout-->
         <!--android:id="@+id/frameLayout_grid"-->
         <!--android:layout_width="match_parent"-->

@@ -24,7 +24,16 @@ public class SodukuGridView extends GridView{
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int expandSpec=MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE>>2,MeasureSpec.AT_MOST);
+        int  size = getAdapter().getCount();
+        int expandSpec=0;
+        if(size==1){
+            setNumColumns(1);
+        }else if(size==2||size==4){
+            setNumColumns(2);
+        }else {
+            setNumColumns(3);
+        }
+        expandSpec=MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE>>2,MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, expandSpec);
     }
 }

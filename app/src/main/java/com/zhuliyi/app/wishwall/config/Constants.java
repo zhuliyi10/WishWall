@@ -5,6 +5,7 @@ package com.zhuliyi.app.wishwall.config;
  * Created by zhuliyi on 2015/12/16.
  */
 public class Constants {
+
         //图片的url
     public static final String[] IMAGES_URL={
 //            "http://f.hiphotos.baidu.com/image/pic/item/91ef76c6a7efce1b20413118ab51f3deb58f65fe.jpg",
@@ -16,13 +17,19 @@ public class Constants {
 //            "http://d.hiphotos.baidu.com/image/pic/item/6c224f4a20a4462362965cb09c22720e0df3d780.jpg",
 //            "http://d.hiphotos.baidu.com/image/pic/item/2f738bd4b31c8701e2964b34237f9e2f0608ffc4.jpg",
 //            "http://f.hiphotos.baidu.com/image/pic/item/64380cd7912397dd94009fd15d82b2b7d1a287ed.jpg"
-            "http://simpozia.com/pages/images/stories/windows-icon.png",
-            "http://radiotray.sourceforge.net/radio.png",
-            "http://www.bandwidthblog.com/wp-content/uploads/2011/11/twitter-logo.png",
-            "http://weloveicons.s3.amazonaws.com/icons/100907_itunes1.png",
-            "http://weloveicons.s3.amazonaws.com/icons/100929_applications.png",
-            "http://www.idyllicmusic.com/index_files/get_apple-iphone.png",
-            "http://www.frenchrevolutionfood.com/wp-content/uploads/2009/04/Twitter-Bird.png",
+
+//            "http://simpozia.com/pages/images/stories/windows-icon.png",
+//            "http://radiotray.sourceforge.net/radio.png",
+//            "http://www.bandwidthblog.com/wp-content/uploads/2011/11/twitter-logo.png",
+//            "http://weloveicons.s3.amazonaws.com/icons/100907_itunes1.png",
+//            "http://weloveicons.s3.amazonaws.com/icons/100929_applications.png",
+//            "http://www.idyllicmusic.com/index_files/get_apple-iphone.png",
+//            "http://www.frenchrevolutionfood.com/wp-content/uploads/2009/04/Twitter-Bird.png",
+//            "http://d.pcs.baidu.com/thumbnail/d28cf7e371ee72503fd655b043069e13?fid=69390188-250528-205373151801056&time=1450796400&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-HBls8VYL9fSWYbYF4yRMuz+b2jM=&expires=8h&chkbd=0&chkv=0&dp-logid=8255984368798729092&dp-callid=0&size=c1366_u768&quality=90"
+
+                "http://img0.bdstatic.com/img/image/shouye/leimu/mingxing.jpg",
+                "http://image.cnwest.com/attachement/jpg/site1/20110507/001372d8a36f0f2f4c953a.jpg",
+                "http://guangdong.sinaimg.cn/2015/0530/U11307P693DT20150530094310.jpg"
     };
         /**
          * 用户的url
