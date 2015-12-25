@@ -2,5 +2,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="picture_spacing">5px</dimen>
+
+
+    <!--自定义距离 开始-->
+    <dimen name="item_list_between">10dp</dimen>
+    <dimen name="content_to_edge">10dp</dimen>
+    <dimen name="pic_grid_spacing">5px</dimen>
+    <dimen name="round_corner_radius">5dp</dimen>
+    <dimen name="border_default">10dp</dimen>
+    <dimen name="font_title">20sp</dimen>
+    <dimen name="font_default">17sp</dimen>
+    <!--自定义距离 开始-->
 </resources>

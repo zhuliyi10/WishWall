@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhuliyi.app.wishwall.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView_head"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/avatar_stranger" />
+
+    <EditText
+        android:id="@+id/editText_account"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView_head"
+        android:layout_marginTop="20dp"
+        android:ellipsize="end"
+        android:hint="用户名"
+        android:maxLength="30"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_border"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/editText_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText_account"
+        android:hint="密码"
+        android:background="@drawable/edit_border"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:password="true"
+        android:layout_marginTop="1dp" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editText_pwd"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_round_corner"
+        android:text="登陆"
+        android:textSize="@dimen/font_default"
+        android:textColor="@color/font_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/font_activation"
+                android:textSize="@dimen/font_default"
+                android:text="注册帐号" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/font_activation"
+                android:textSize="@dimen/font_default"
+                android:text="忘记密码" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

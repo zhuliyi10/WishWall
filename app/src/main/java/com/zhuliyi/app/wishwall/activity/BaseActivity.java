@@ -8,9 +8,9 @@ import android.widget.RelativeLayout;
 
 import com.zhuliyi.app.wishwall.R;
 import com.zhuliyi.app.wishwall.view.MenuItem;
-import com.zly.library.swipebacklayout.ReturnActivity;
+import com.zly.library.swipebacklayout.SwipeBackActivity;
 
-public class BaseActivity extends ReturnActivity {
+public class BaseActivity extends SwipeBackActivity {
     private View viewLayout;
     public FrameLayout flMain;
     public RelativeLayout actionBar;

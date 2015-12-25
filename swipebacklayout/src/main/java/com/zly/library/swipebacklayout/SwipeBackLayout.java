@@ -49,7 +49,7 @@ public class SwipeBackLayout extends FrameLayout {
 		super(context, attrs, defStyle);
 		mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 		mScroller = new Scroller(context);
-		mShadowDrawable = getResources().getDrawable(R.drawable.shadow_left);
+//		mShadowDrawable = getResources().getDrawable(R.drawable.shadow_left);
 	}
 
 	public void attachToActivity(Activity activity) {
@@ -132,7 +132,7 @@ public class SwipeBackLayout extends FrameLayout {
 			break;
 		case MotionEvent.ACTION_UP:
 			isSilding = false;
-			if (mContentView.getScrollX() <= -viewWidth / 2) {
+			if (mContentView.getScrollX() <= -viewWidth / 5) {
 				isFinish = true;
 				scrollRight();
 			} else {

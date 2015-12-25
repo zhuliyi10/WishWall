@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:textColor="#494949"
-                android:text="心愿榜"
+                android:text="@string/wish"
                 android:id="@+id/textView1" />
         </LinearLayout>
         <LinearLayout
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:textColor="#494949"
-                android:text="心情街"
+                android:text="@string/mood"
                 android:id="@+id/textView2"
                 android:layout_gravity="center" />
         </LinearLayout>
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:textColor="#494949"
-                android:text="表白墙"
+                android:text="@string/confession"
                 android:id="@+id/textView3" />
         </LinearLayout>
     </LinearLayout>

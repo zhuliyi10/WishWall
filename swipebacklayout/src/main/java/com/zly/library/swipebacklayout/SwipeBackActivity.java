@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
  * @author xiechengfa2000@163.com
  * @date 2015-4-25 下午11:04:43
  */
-public class ReturnActivity extends Activity {
+public class SwipeBackActivity extends Activity {
 	public SwipeBackLayout swipeBackLayout;
 
 	@Override

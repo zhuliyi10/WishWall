@@ -32,13 +32,14 @@ public class MainActivity extends MainFragmentActivity {
 
     private static final int PAGECOUNT = 3;//主页面包含的子页面个数
     private int curentPage = 0;//目前的页面
-    private int red1 = 73, green1 = 73, blue1 = 73;//字体的颜色变化
+    private int red1 = 128, green1 = 128, blue1 = 128;//字体的颜色变化
     private int red2 = 36, green2 = 170, blue2 = 254;
     private int redDif = red2 - red1, greenDif = green2 - green1, blueDif = blue2 - blue1;
     private ArrayList<Fragment> fragmentList;//fragment列表
     private ViewPager viewPager;//用于滑动的viewpager
     private MyPagerAdapter pagerAdapter;//用来装fragment的adapter
     private SlidingMenu menu;
+    private MenuItem menuCenter;
 
     private LinearLayout[] ll_tab;
     private ImageView[] ivn_tab, iva_tab;
@@ -98,7 +99,7 @@ public class MainActivity extends MainFragmentActivity {
         menu=new SlidingMenu(this);//初始化Slidingmenu
         menu.setMode(SlidingMenu.LEFT);
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);// 设置菜单滑动，触碰屏幕的范围
-        menu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 3);// 设置SlidingMenu边框距离
+        menu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 4);// 设置SlidingMenu边框距离
         menu.setBehindScrollScale(0f);//  设置SlidingMenu滑动的拖拽效果
         //menu.setFadeDegree(0.35f);// 设置SlidingMenu渐变
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);//使SlidingMenu附加在Activity上
@@ -110,6 +111,9 @@ public class MainActivity extends MainFragmentActivity {
      * 初始化数据
      */
     private void initData() {
+
+
+        initTabFontColor();
         fragmentList = new ArrayList<>();
         fragmentList.add(WishFragment.newInstance());
         fragmentList.add(MoodFragment.newInstance());
@@ -133,6 +137,22 @@ public class MainActivity extends MainFragmentActivity {
     }
 
     /**
+     * 初始化tab字体颜色
+     */
+    private void initTabFontColor(){
+        int deactivation=getResources().getColor(R.color.font_deactivation);
+        int activation=getResources().getColor(R.color.font_activation);
+        red1=Color.red(deactivation);
+        green1=Color.green(deactivation);
+        blue1=Color.blue(deactivation);
+        red2=Color.red(activation);
+        green2=Color.green(activation);
+        blue2=Color.blue(activation);
+        redDif=red2-red1;
+        greenDif=green2-green1;
+        blueDif=blue2-blue1;
+    }
+    /**
      * 设置Tab的位置
      *
      * @param position 位置
@@ -151,6 +171,20 @@ public class MainActivity extends MainFragmentActivity {
         }
         curentPage = position;
         viewPager.setCurrentItem(position, false);
+        //设定标题
+        String titile;
+        switch (curentPage){
+            case 0:titile=getResources().getString(R.string.wish);break;
+            case 1:titile=getResources().getString(R.string.mood);break;
+            case 2:titile=getResources().getString(R.string.confession);break;
+            default:titile=getResources().getString(R.string.wish);break;
+        }
+        if(menuCenter==null){
+            menuCenter=new MenuItem(this);
+            addCenterItem(menuCenter.show(MenuItem.ICON_LEFT,MenuItem.ITEM_TITLE));
+        }
+        menuCenter.setTitle(titile);
+
     }
 
     View.OnClickListener menuListener = new View.OnClickListener() {

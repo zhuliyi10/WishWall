@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape>
+
+            <solid android:color="@color/white"></solid><!--这里是背景的颜色-->
+            <stroke android:color="@color/white" android:width="@dimen/border_default"></stroke><!-- 这里是边框的颜色和宽度 -->
+            <corners android:radius="@dimen/round_corner_radius"></corners><!-- 这里是圆角半径 -->
+
+        </shape>
+    </item>
+</selector>

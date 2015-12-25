@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zhuliyi.app.wishwall.activity.RegisterActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/foreground"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout_account"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户名注册"
+                android:textSize="@dimen/font_default"
+                android:textColor="@color/font_activation" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_phone"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号注册"
+                android:textSize="@dimen/font_default"
+                android:textColor="@color/font_activation"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_activation"
+            android:id="@+id/textView_underline1"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_activation"
+            android:id="@+id/textView_underline2"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+    </LinearLayout>
+</LinearLayout>
