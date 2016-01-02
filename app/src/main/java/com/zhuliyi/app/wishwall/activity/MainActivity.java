@@ -5,15 +5,19 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.slidingmenu.lib.SlidingMenu;
 import com.zhuliyi.app.wishwall.R;
+import com.zhuliyi.app.wishwall.config.Configuration;
 import com.zhuliyi.app.wishwall.fragment.ConfessionFragment;
 import com.zhuliyi.app.wishwall.fragment.MenuFragment;
 import com.zhuliyi.app.wishwall.fragment.MoodFragment;
@@ -38,9 +42,10 @@ public class MainActivity extends MainFragmentActivity {
     private ArrayList<Fragment> fragmentList;//fragment列表
     private ViewPager viewPager;//用于滑动的viewpager
     private MyPagerAdapter pagerAdapter;//用来装fragment的adapter
-    private SlidingMenu menu;
     private MenuItem menuCenter;
 
+    private DrawerLayout drawerLayout;//抽屉布局
+    private FrameLayout flMenu;//侧滑菜单
     private LinearLayout[] ll_tab;
     private ImageView[] ivn_tab, iva_tab;
     private TextView[] tv_tab;
@@ -58,6 +63,8 @@ public class MainActivity extends MainFragmentActivity {
      * 初始化视图
      */
     private void initView() {
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        flMenu = (FrameLayout) findViewById(R.id.frame_menu);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         ll_tab = new LinearLayout[]{
                 (LinearLayout) findViewById(R.id.linearLayout1),
@@ -83,35 +90,33 @@ public class MainActivity extends MainFragmentActivity {
                         .setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                menu.toggle();
+                                drawerLayout.openDrawer(GravityCompat.START);//打开抽屉
                             }
                         })
         );
-        //初始化菜单栏
-        initSlidingMenu();
+
 
     }
 
     /**
-     * SlidingMenu的设置
+     * 初始化抽屉菜单
      */
-    private void initSlidingMenu(){
-        menu=new SlidingMenu(this);//初始化Slidingmenu
-        menu.setMode(SlidingMenu.LEFT);
-        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);// 设置菜单滑动，触碰屏幕的范围
-        menu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 4);// 设置SlidingMenu边框距离
-        menu.setBehindScrollScale(0f);//  设置SlidingMenu滑动的拖拽效果
-        //menu.setFadeDegree(0.35f);// 设置SlidingMenu渐变
-        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);//使SlidingMenu附加在Activity上
-        menu.setMenu(R.layout.frame_menu);//设置menu的布局文件
+    private void initDrawerMenu() {
         getSupportFragmentManager().beginTransaction()// 替换布局为 fragment
-                .replace(R.id.frameLayout_menu, MenuFragment.newInstance()).commit();
+                .replace(R.id.frame_menu, MenuFragment.newInstance()).commit();
+        //自定义menu宽度的大小
+        ViewGroup.LayoutParams lp=flMenu.getLayoutParams();
+        lp.width= Configuration.Equipment.SCREEN_WIDTH/6*5;
+        flMenu.setLayoutParams(lp);
+
     }
+
     /**
      * 初始化数据
      */
     private void initData() {
 
+        initDrawerMenu();//初始化抽屉菜单
 
         initTabFontColor();
         fragmentList = new ArrayList<>();
@@ -129,29 +134,32 @@ public class MainActivity extends MainFragmentActivity {
      * 设置监听
      */
     private void setListener() {
+        drawerLayout.setDrawerListener(new MyDrawerListener());//设置抽屉状态变化的监听
         for (int i = 0; i < ll_tab.length; i++) {
             ll_tab[i].setOnClickListener(tabListener);
             ll_tab[i].setTag(i);
         }
         viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
+
     }
 
     /**
      * 初始化tab字体颜色
      */
-    private void initTabFontColor(){
-        int deactivation=getResources().getColor(R.color.font_deactivation);
-        int activation=getResources().getColor(R.color.font_activation);
-        red1=Color.red(deactivation);
-        green1=Color.green(deactivation);
-        blue1=Color.blue(deactivation);
-        red2=Color.red(activation);
-        green2=Color.green(activation);
-        blue2=Color.blue(activation);
-        redDif=red2-red1;
-        greenDif=green2-green1;
-        blueDif=blue2-blue1;
+    private void initTabFontColor() {
+        int deactivation = getResources().getColor(R.color.font_deactivation);
+        int activation = getResources().getColor(R.color.font_activation);
+        red1 = Color.red(deactivation);
+        green1 = Color.green(deactivation);
+        blue1 = Color.blue(deactivation);
+        red2 = Color.red(activation);
+        green2 = Color.green(activation);
+        blue2 = Color.blue(activation);
+        redDif = red2 - red1;
+        greenDif = green2 - green1;
+        blueDif = blue2 - blue1;
     }
+
     /**
      * 设置Tab的位置
      *
@@ -173,15 +181,23 @@ public class MainActivity extends MainFragmentActivity {
         viewPager.setCurrentItem(position, false);
         //设定标题
         String titile;
-        switch (curentPage){
-            case 0:titile=getResources().getString(R.string.wish);break;
-            case 1:titile=getResources().getString(R.string.mood);break;
-            case 2:titile=getResources().getString(R.string.confession);break;
-            default:titile=getResources().getString(R.string.wish);break;
+        switch (curentPage) {
+            case 0:
+                titile = getResources().getString(R.string.wish);
+                break;
+            case 1:
+                titile = getResources().getString(R.string.mood);
+                break;
+            case 2:
+                titile = getResources().getString(R.string.confession);
+                break;
+            default:
+                titile = getResources().getString(R.string.wish);
+                break;
         }
-        if(menuCenter==null){
-            menuCenter=new MenuItem(this);
-            addCenterItem(menuCenter.show(MenuItem.ICON_LEFT,MenuItem.ITEM_TITLE));
+        if (menuCenter == null) {
+            menuCenter = new MenuItem(this);
+            addCenterItem(menuCenter.show(MenuItem.ICON_LEFT, MenuItem.ITEM_TITLE));
         }
         menuCenter.setTitle(titile);
 
@@ -190,7 +206,7 @@ public class MainActivity extends MainFragmentActivity {
     View.OnClickListener menuListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ToastManager.showToast(MainActivity.this,"你点击了我！", Toast.LENGTH_LONG);
+            ToastManager.showToast(MainActivity.this, "你点击了我！", Toast.LENGTH_LONG);
         }
     };
     /**
@@ -260,6 +276,35 @@ public class MainActivity extends MainFragmentActivity {
         @Override
         public void onPageScrollStateChanged(int state) {
 
+        }
+    }
+
+    /**
+     * DrawerLayout状态变化监听
+     */
+    private class MyDrawerListener extends DrawerLayout.SimpleDrawerListener {
+        public MyDrawerListener() {
+            super();
+        }
+
+        @Override
+        public void onDrawerSlide(View drawerView, float slideOffset) {
+            super.onDrawerSlide(drawerView, slideOffset);
+        }
+
+        @Override
+        public void onDrawerOpened(View drawerView) {
+            super.onDrawerOpened(drawerView);
+        }
+
+        @Override
+        public void onDrawerClosed(View drawerView) {
+            super.onDrawerClosed(drawerView);
+        }
+
+        @Override
+        public void onDrawerStateChanged(int newState) {
+            super.onDrawerStateChanged(newState);
         }
     }
 
