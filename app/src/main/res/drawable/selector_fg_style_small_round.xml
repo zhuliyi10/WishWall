@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--小圆主题颜色的选择-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/shape_fg_style_small_round_pressed">
+    </item>
+    <item android:drawable="@drawable/shape_fg_style_small_round_default">
+    </item>
+
+</selector>

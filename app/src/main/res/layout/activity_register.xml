@@ -1,17 +1,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="com.zhuliyi.app.wishwall.activity.RegisterActivity"
     android:orientation="vertical">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:background="@color/foreground"
+        android:background="@color/foreground_default"
         android:layout_height="50dp">
 
         <LinearLayout
-            android:id="@+id/linearLayout_account"
+            android:id="@+id/linear_tab_account"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,12 +24,12 @@
                 android:layout_height="wrap_content"
                 android:text="用户名注册"
                 android:textSize="@dimen/font_default"
-                android:textColor="@color/font_activation" />
+                android:textColor="@color/font_style" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout_phone"
+            android:id="@+id/linear_tab_phone"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="手机号注册"
                 android:textSize="@dimen/font_default"
-                android:textColor="@color/font_activation"/>
+                android:textColor="@color/font_style"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -53,16 +54,126 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background_activation"
+            android:background="@color/foreground_style"
             android:id="@+id/textView_underline1"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background_activation"
+            android:background="@color/foreground_style"
             android:id="@+id/textView_underline2"
             android:layout_weight="1"
             android:visibility="invisible" />
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linear_content_account">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请输入用户名"
+                android:layout_marginTop="@dimen/margin_default"
+                android:paddingLeft="@dimen/padding_long"
+                android:background="@drawable/shape_edit_border"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请输入密码"
+                android:layout_marginTop="1dp"
+                android:paddingLeft="@dimen/padding_long"
+                android:background="@drawable/shape_edit_border"
+                android:password="true" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请再次输入密码"
+                android:layout_marginTop="1dp"
+                android:paddingLeft="@dimen/padding_long"
+                android:background="@drawable/shape_edit_border"
+                android:password="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:id="@+id/linear_content_phone">
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_height="50dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="请输入正确的手机号码"
+                    android:paddingLeft="@dimen/padding_long"
+                    android:background="@drawable/shape_edit_border"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/selector_fg_style_small_round"
+                    android:layout_margin="@dimen/margin_short"
+                    android:padding="@dimen/padding_default"
+                    android:textSize="@dimen/font_m"
+                    android:textColor="@color/font_on_style"
+                    android:text="获取验证码"
+                    android:id="@+id/button"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="验证码"
+                android:layout_marginTop="1dp"
+                android:paddingLeft="@dimen/padding_long"
+                android:background="@drawable/shape_edit_border"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请输入密码"
+                android:layout_marginTop="@dimen/margin_default"
+                android:paddingLeft="@dimen/padding_long"
+                android:background="@drawable/shape_edit_border"
+                android:password="true" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请再次输入密码"
+                android:layout_marginTop="1dp"
+                android:paddingLeft="@dimen/padding_long"
+                android:background="@drawable/shape_edit_border"
+                android:password="true" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="注册"
+        android:textColor="@color/font_on_style"
+        android:textSize="@dimen/font_default"
+        android:background="@drawable/selector_fg_style_half_round"
+        android:id="@+id/button_reg" />
 </LinearLayout>

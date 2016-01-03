@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.zhuliyi.app.wishwall.fragment.MenuFragment">
@@ -7,6 +7,7 @@
 
     <LinearLayout
         android:orientation="vertical"
+        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,8 +25,9 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:background="@drawable/selector_fg_default"
+                android:clickable="true"
                 android:gravity="center_vertical"
-                android:background="#ffffff"
                 android:id="@+id/relativeLayout_info">
 
                 <ImageView
@@ -54,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="简介"
-                        android:textColor="@color/font_deactivation"
+                        android:textColor="@color/font_unfocus"
                         android:id="@+id/textView_introduction"
                         android:layout_marginTop="10dp"
                         android:lines="1"
@@ -78,13 +80,14 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#ffffff">
+                android:layout_height="40dp">
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/selector_fg_default"
+                    android:clickable="true"
                     android:layout_weight="1"
                     android:gravity="center">
                     <TextView
@@ -102,6 +105,8 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/selector_fg_default"
+                    android:clickable="true"
                     android:layout_weight="1"
                     android:gravity="center">
                     <TextView
@@ -119,6 +124,8 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/selector_fg_default"
+                    android:clickable="true"
                     android:layout_weight="1"
                     android:gravity="center">
                     <TextView
@@ -136,20 +143,25 @@
                 android:id="@+id/linearLayout_notLanded"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:orientation="vertical"
-                android:background="@color/foreground"
-                android:gravity="center">
+                android:orientation="horizontal"
+                android:background="@drawable/selector_fg_default"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:id="@+id/imageView"
+                    android:paddingLeft="@dimen/margin_default"
                     android:src="@mipmap/avatar_stranger" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/font_activation"
+                    android:textColor="@color/font_style"
+                    android:textSize="@dimen/font_default"
+                    android:paddingLeft="@dimen/padding_default"
                     android:text="@string/notLanded"/>
             </LinearLayout>
         </FrameLayout>
@@ -163,18 +175,21 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff">
+
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@drawable/selector_fg_default"
+                android:clickable="true"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView4"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/margin_default"
                     android:background="@mipmap/btn_scan"
                     android:layout_centerVertical="true" />
 
@@ -182,14 +197,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="扫一扫"
+                    android:textSize="@dimen/font_default"
                     android:layout_toRightOf="@+id/imageView4"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/margin_default"
                     android:layout_centerVertical="true" />
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="12dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/margin_default"
                     android:src="@mipmap/btn_setting_item_arrow"
                     android:layout_centerVertical="true" />
             </RelativeLayout>
@@ -202,21 +218,31 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@drawable/selector_fg_default"
+                android:clickable="true"
                 android:orientation="horizontal">
 
-
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView5"
+                    android:layout_marginLeft="@dimen/margin_default"
+                    android:background="@mipmap/btn_hand_switch"
+                    android:layout_centerVertical="true" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="左手操作"
-                    android:layout_marginLeft="10dp"
+                    android:textSize="@dimen/font_default"
+                    android:layout_marginLeft="@dimen/margin_default"
                     android:layout_centerVertical="true"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:layout_toRightOf="@+id/imageView5" />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/margin_default"
                     android:src="@mipmap/btn_setting_item_check_no"
                     android:layout_centerVertical="true" />
             </RelativeLayout>
@@ -230,18 +256,20 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff">
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:background="@drawable/selector_fg_default"
+                android:clickable="true"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:id="@+id/imageView3"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/margin_default"
                     android:background="@mipmap/ic_setting"
                     android:layout_centerVertical="true" />
 
@@ -249,18 +277,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="其他设置"
+                    android:textSize="@dimen/font_default"
                     android:layout_toRightOf="@+id/imageView3"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/margin_default"
                     android:layout_centerVertical="true" />
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="12dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/margin_default"
                     android:src="@mipmap/btn_setting_item_arrow"
                     android:layout_centerVertical="true" />
             </RelativeLayout>
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
     </LinearLayout>
-</FrameLayout>
+</ScrollView>

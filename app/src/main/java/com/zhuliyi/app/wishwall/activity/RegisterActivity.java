@@ -14,7 +14,8 @@ import com.zhuliyi.app.wishwall.view.MenuItem;
  */
 public class RegisterActivity extends BaseActivity {
 
-    private LinearLayout llAcount,llPhone;
+    private LinearLayout llTabAcount,llTabPhone;
+    private LinearLayout llContentAccount,llContentPhone;
     private TextView tvUnderline1,tvUnderline2;
 
     @Override
@@ -41,31 +42,37 @@ public class RegisterActivity extends BaseActivity {
         );
         addCenterItem(new MenuItem(this).show(MenuItem.ICON_LEFT, MenuItem.ITEM_TITLE).setTitle("注册"));
 
-        llAcount= (LinearLayout) findViewById(R.id.linearLayout_account);
-        llPhone= (LinearLayout) findViewById(R.id.linearLayout_phone);
+        llTabAcount= (LinearLayout) findViewById(R.id.linear_tab_account);
+        llTabPhone= (LinearLayout) findViewById(R.id.linear_tab_phone);
         tvUnderline1= (TextView) findViewById(R.id.textView_underline1);
         tvUnderline2= (TextView) findViewById(R.id.textView_underline2);
+        llContentAccount= (LinearLayout) findViewById(R.id.linear_content_account);
+        llContentPhone= (LinearLayout) findViewById(R.id.linear_content_phone);
     }
 
     /**
      * 设置监听器
      */
     private void setListener(){
-        llAcount.setOnClickListener(listener);
-        llPhone.setOnClickListener(listener);
+        llTabAcount.setOnClickListener(listener);
+        llTabPhone.setOnClickListener(listener);
     }
 
     View.OnClickListener listener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.linearLayout_account:
+                case R.id.linear_tab_account:
                     tvUnderline1.setVisibility(View.VISIBLE);
                     tvUnderline2.setVisibility(View.INVISIBLE);
+                    llContentAccount.setVisibility(View.VISIBLE);
+                    llContentPhone.setVisibility(View.GONE);
                     break;
-                case R.id.linearLayout_phone:
+                case R.id.linear_tab_phone:
                     tvUnderline1.setVisibility(View.INVISIBLE);
                     tvUnderline2.setVisibility(View.VISIBLE);
+                    llContentAccount.setVisibility(View.GONE);
+                    llContentPhone.setVisibility(View.VISIBLE);
                 default:break;
             }
         }

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="com.zhuliyi.app.wishwall.activity.LoginActivity">
 
     <ImageView
@@ -23,9 +24,10 @@
         android:layout_marginTop="20dp"
         android:ellipsize="end"
         android:hint="用户名"
+        android:textSize="@dimen/font_default"
         android:maxLength="30"
         android:paddingLeft="10dp"
-        android:background="@drawable/edit_border"
+        android:background="@drawable/shape_edit_border"
         android:singleLine="true" />
 
     <EditText
@@ -36,7 +38,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editText_account"
         android:hint="密码"
-        android:background="@drawable/edit_border"
+        android:textSize="@dimen/font_default"
+        android:background="@drawable/shape_edit_border"
         android:paddingLeft="10dp"
         android:singleLine="true"
         android:ellipsize="end"
@@ -48,13 +51,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/editText_pwd"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/button_round_corner"
+        android:background="@drawable/selector_fg_style_half_round"
         android:text="登陆"
         android:textSize="@dimen/font_default"
-        android:textColor="@color/font_white" />
+        android:textColor="@color/font_on_style" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,7 +78,9 @@
                 android:id="@+id/textView_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/font_activation"
+                android:padding="@dimen/padding_default"
+                android:textColor="@drawable/selector_font_style"
+                android:clickable="true"
                 android:textSize="@dimen/font_default"
                 android:text="注册帐号" />
         </LinearLayout>
@@ -91,7 +96,9 @@
                 android:id="@+id/textView_forget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/font_activation"
+                android:padding="@dimen/padding_default"
+                android:textColor="@drawable/selector_font_style"
+                android:clickable="true"
                 android:textSize="@dimen/font_default"
                 android:text="忘记密码" />
         </LinearLayout>

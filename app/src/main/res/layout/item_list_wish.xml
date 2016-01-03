@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
+    android:background="@drawable/selector_fg_default"
     android:id="@+id/linearLayout_item"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/content_to_edge"
-        android:paddingRight="@dimen/content_to_edge">
+        android:paddingLeft="@dimen/margin_default"
+        android:paddingRight="@dimen/margin_default">
 
         <ImageView
             android:id="@+id/imageView_head"
@@ -24,7 +23,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/margin_default"
             android:layout_toRightOf="@+id/imageView_head"
             android:orientation="vertical">
 
@@ -32,8 +31,9 @@
                 android:id="@+id/textView_nickName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/font_activation"
+                android:layout_marginTop="@dimen/margin_default"
+                android:textColor="@color/font_style"
+                android:textSize="@dimen/font_default"
                 android:text="这个是昵称" />
 
             <TextView
@@ -41,7 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/font_deactivation"
+                android:textColor="@color/font_unfocus"
+                android:textSize="@dimen/font_m"
                 android:text="这个是学校" />
         </LinearLayout>
 
@@ -51,8 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="false"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/font_deactivation"
+            android:layout_marginTop="@dimen/margin_default"
+            android:textColor="@color/font_unfocus"
+            android:textSize="@dimen/font_s"
             android:text="时间" />
     </RelativeLayout>
 
@@ -61,9 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/font_default"
+        android:textSize="@dimen/font_default"
         android:text="这是发表的内容这是发表的内容这是发表的内容这是发表的内容这是发表的内容这是发表的内容这是发表的内容这是发表的内容这是发表的内容这是发表的内容这是发表的内容。"
-        android:paddingLeft="@dimen/content_to_edge"
-        android:paddingRight="@dimen/content_to_edge" />
+        android:paddingLeft="@dimen/margin_default"
+        android:paddingRight="@dimen/margin_default" />
 
     <com.zhuliyi.app.wishwall.view.SodukuGridView
         android:layout_width="match_parent"
@@ -117,8 +120,9 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/font_deactivation"
+                android:layout_marginLeft="@dimen/margin_short"
+                android:textColor="@color/font_unfocus"
+                android:textSize="@dimen/font_m"
                 android:text="@string/comment" />
         </LinearLayout>
 
@@ -147,8 +151,9 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/font_deactivation"
+                android:layout_marginLeft="@dimen/margin_short"
+                android:textColor="@color/font_unfocus"
+                android:textSize="@dimen/font_m"
                 android:text="@string/like" />
         </LinearLayout>
 
@@ -177,10 +182,18 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/font_deactivation"
+                android:layout_marginLeft="@dimen/margin_short"
+                android:textColor="@color/font_unfocus"
+                android:textSize="@dimen/font_m"
                 android:text="@string/forward" />
         </LinearLayout>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/background" />
 </LinearLayout>

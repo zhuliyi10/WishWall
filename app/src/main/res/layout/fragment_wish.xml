@@ -9,7 +9,5 @@
         android:id="@+id/listView_wish"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:dividerHeight="@dimen/item_list_between"
-        android:divider="@color/background"/>
+        android:scrollbars="none"/>
 </FrameLayout>

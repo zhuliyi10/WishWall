@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--主题字体的选择-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:color="@color/font_style_pressed">
+    </item>
+    <item android:color="@color/font_style">
+    </item>
+
+</selector>

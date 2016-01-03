@@ -147,8 +147,8 @@ public class MainActivity extends MainFragmentActivity {
      * 初始化tab字体颜色
      */
     private void initTabFontColor() {
-        int deactivation = getResources().getColor(R.color.font_deactivation);
-        int activation = getResources().getColor(R.color.font_activation);
+        int deactivation = getResources().getColor(R.color.font_unfocus);
+        int activation = getResources().getColor(R.color.font_style);
         red1 = Color.red(deactivation);
         green1 = Color.green(deactivation);
         blue1 = Color.blue(deactivation);

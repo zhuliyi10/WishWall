@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -29,9 +28,9 @@ public class ImageGridAdapter extends BaseAdapter{
     public ImageGridAdapter(Context context){
         mContext=context;
         options=new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_stub)
-                .showImageForEmptyUri(R.mipmap.ic_empty)
-                .showImageOnFail(R.mipmap.ic_error)
+//                .showImageOnLoading(R.mipmap.ic_stub)
+//                .showImageForEmptyUri(R.mipmap.ic_empty)
+//                .showImageOnFail(R.mipmap.ic_error)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .considerExifParams(true)
@@ -89,29 +88,23 @@ public class ImageGridAdapter extends BaseAdapter{
                 .displayImage(imagesUrl[position], holder.imageView, options, new SimpleImageLoadingListener() {
                     @Override
                     public void onLoadingStarted(String imageUri, View view) {
-                        holder.progressBar.setProgress(0);
-                        holder.progressBar.setVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                        holder.progressBar.setVisibility(View.GONE);
 
                     }
 
                     @Override
                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                        holder.progressBar.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void onLoadingCancelled(String imageUri, View view) {
-                        holder.progressBar.setVisibility(View.GONE);
                     }
                 }, new ImageLoadingProgressListener() {
                     @Override
                     public void onProgressUpdate(String s, View view, int current, int total) {
-                        holder.progressBar.setProgress(Math.round(100.0f*current/total ));
                     }
                 });
         return convertView;
@@ -121,10 +114,8 @@ public class ImageGridAdapter extends BaseAdapter{
      */
     private static class ViewHolder{
         public ImageView imageView;
-        public ProgressBar progressBar;
         public ViewHolder(View convertView){
             imageView= (ImageView) convertView.findViewById(R.id.imageView_item);
-            progressBar= (ProgressBar) convertView.findViewById(R.id.progressBar_item);
 
         }
     }
